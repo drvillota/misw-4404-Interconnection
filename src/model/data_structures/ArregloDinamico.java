@@ -468,10 +468,8 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 		@Override
 		public int compareTo(ILista o) {
-			// Compara el primer elemento de esta lista con el primer elemento de la otra lista
-			String thisElement = (String) this.elementos[0];
-			String otherElement = (String) o.elementos[0];
-			
-			return thisElement.compareTo(otherElement);  // Usa compareTo() de String
+			// TODO Auto-generated method stub
+			return 0;
 		}
+
 }
