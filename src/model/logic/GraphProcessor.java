@@ -314,4 +314,82 @@ public class GraphProcessor {
         }
         return unificado;
     }
+    
+    public String obtenerPaisesAfectadosPorLanding(String punto) {
+        String codigo = (String) nombrecodigo.get(punto);
+        ILista lista = (ILista) landingidtabla.get(codigo);
+        
+        ILista countries = new ArregloDinamico<>(1);
+        
+        // Intentamos agregar el país original
+        try {
+            Country paisOriginal = (Country) paises.get(((Landing) ((Vertex) lista.getElement(1)).getInfo()).getPais());
+            countries.insertElement(paisOriginal, countries.size() + 1);
+        } catch (PosException | VacioException | NullException e1) {
+            e1.printStackTrace();
+        }
+        
+        // Recorrer los vértices y sus arcos para obtener los países afectados
+        for (int i = 1; i <= lista.size(); i++) {
+            try {
+                Vertex vertice = (Vertex) lista.getElement(i);
+                ILista arcos = vertice.edges();
+                
+                for (int j = 1; j <= arcos.size(); j++) {
+                    Vertex vertice2 = ((Edge) arcos.getElement(j)).getDestination();
+                    
+                    Country pais = null;
+                    if (vertice2.getInfo().getClass().getName().equals("model.data_structures.Landing")) {
+                        Landing landing = (Landing) vertice2.getInfo();
+                        pais = (Country) paises.get(landing.getPais());
+                        countries.insertElement(pais, countries.size() + 1);
+                        
+                        // Calcular distancia
+                        float distancia = distancia(pais.getLongitude(), pais.getLatitude(), landing.getLongitude(), landing.getLatitude());
+                        pais.setDistlan(distancia);
+                    } else {
+                        pais = (Country) vertice2.getInfo();
+                    }
+                }
+            } catch (PosException | VacioException | NullException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        // Unificamos los países en la lista
+        ILista unificado = unificar(countries, "Country");
+        
+        // Ordenamos por distancia
+        Comparator<Country> comparador = new ComparadorXKm();
+        Ordenamiento<Country> algsOrdenamientoEventos = new Ordenamiento<>();
+        
+        try {
+            if (lista != null) {
+                algsOrdenamientoEventos.ordenarMergeSort(unificado, comparador, true);
+            }
+        } catch (PosException | VacioException | NullException e) {
+            e.printStackTrace();
+        }
+        
+        // Construir el resultado en formato de String
+        StringBuilder fragmento = new StringBuilder();
+        fragmento.append("La cantidad de países afectados es: ").append(unificado.size()).append("\nLos países afectados son: ");
+        
+        // Iterar sobre la lista unificada para mostrar los países afectados
+        for (int i = 1; i <= unificado.size(); i++) {
+            try {
+                Country pais = (Country) unificado.getElement(i);
+                fragmento.append("\nNombre: ").append(pais.getCountryName())
+                        .append("\nDistancia al landing point: ").append(pais.getDistlan());
+            } catch (PosException | VacioException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return fragmento.toString();
+    }
+    
 }
+
+
+
