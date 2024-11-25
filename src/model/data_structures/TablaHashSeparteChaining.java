@@ -165,9 +165,9 @@ public class TablaHashSeparteChaining <K extends Comparable<K>, V extends Compar
 		{
 			for (int i=1; i<= tamanoTabla; i++)
 			{
-				if (listaNodos.getElement(i) !=null)
+				if (listaNodos.getElement(i)!=null)
 				{
-					for (int j=1; j<=listaNodos.getElement(i).size(); j++)
+					for (int j=1; j<= listaNodos.getElement(i).size(); j++)
 					{
 						if (listaNodos.getElement(i).getElement(j)!= null)
 						{

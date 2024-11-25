@@ -146,16 +146,6 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			
 		}
 		
-//		public void invertir()
-//		{
-//			T[]copia=elementos;
-//			elementos=(T[])new Comparable[tamanoMax];
-//			for(int i =0;i<tamanoAct;i++)
-//			{
-//				elementos[tamanoAct-1-i]=copia[i];
-//			}
-//		}
-
 
 		//Siempre se llama a insert o a delete primero, esos métodos manejan los casos de que el elemento sea null, 
 		//isEmpty o que la posición no sea válida
@@ -481,5 +471,6 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			// TODO Auto-generated method stub
 			return 0;
 		}
+		
 
 }
