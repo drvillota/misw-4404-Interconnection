@@ -219,4 +219,22 @@ public class GraphProcessor {
         }
         return unificado;
     }
+
+    public String obtenerPaisesAfectadosPorLanding(String punto) {
+    ILista afectados = req5(punto);
+    
+    String fragmento = "La cantidad de países afectados es: " + afectados.size() + "\nLos países afectados son: ";
+    
+    for (int i = 1; i <= afectados.size(); i++) {
+        try {
+            fragmento += "\nNombre: " + ((Country) afectados.getElement(i)).getCountryName() 
+                    + "\nDistancia al landing point: " + ((Country) afectados.getElement(i)).getDistlan();
+        } catch (PosException | VacioException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    return fragmento;
+}
+
 }
