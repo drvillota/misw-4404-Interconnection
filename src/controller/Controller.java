@@ -64,13 +64,13 @@ public class Controller<T> {
 				String punto2= lector.next();
 				lector.nextLine();
 				
-				String res1=modelo.req1String(punto1, punto2);
+				String res1=modelo.obtenerInfoCluseteresConectados(punto1, punto2);
 				view.printMessage(res1);
 				
 				break;
 				
 			case 3:
-				String res2= modelo.req2String();
+				String res2= modelo.obtenerLandingConectados();
 				view.printMessage(res2);
 				break;
 				
@@ -83,11 +83,11 @@ public class Controller<T> {
 				String pais2= lector.next();
 				lector.nextLine();
 				
-				String res3= modelo.req3String(pais1, pais2);
+				String res3= modelo.obtenerRutaEntrePaises(pais1, pais2);
 				view.printMessage(res3);
 				break;
 			case 5:
-				String res4= modelo.req4String();
+				String res4= modelo.obtenerRedExpansiva();
 				view.printMessage(res4);
 				break;
 			case 6:

@@ -356,20 +356,20 @@ public class Modelo {
 		return fragmento;
 	}
 	
-	public String req1String(String punto1, String punto2) {
-        return graphProcessor.req1String(punto1, punto2);
+	public String obtenerInfoCluseteresConectados(String punto1, String punto2) {
+        return graphProcessor.obtenerInfoCluseteresConectados(punto1, punto2);
     }
 
-    public String req2String() {
-        return graphProcessor.req2String();
+    public String obtenerLandingConectados() {
+        return graphProcessor.obtenerLandingConectados();
     }
 
-    public String req3String(String pais1, String pais2) {
-        return graphProcessor.req3String(pais1, pais2);
+    public String obtenerRutaEntrePaises(String pais1, String pais2) {
+        return graphProcessor.obtenerRutaEntrePaises(pais1, pais2);
     }
 
-    public String req4String() {
-        return graphProcessor.req4String();
+    public String obtenerRedExpansiva() {
+        return graphProcessor.obtenerRedExpansiva();
     }
 
     public String req5String(String punto) {
