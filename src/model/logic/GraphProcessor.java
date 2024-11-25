@@ -237,6 +237,4 @@ public class GraphProcessor {
         
         return fragmento.toString();
     }
-
-
 }
