@@ -372,7 +372,7 @@ public class Modelo {
         return graphProcessor.obtenerRedExpansiva();
     }
 
-    public String obtenerPaisesAfectadosPorLanding(String punto) {
+    public String obtenerPaisesAfectados(String punto) {
         return graphProcessor.obtenerPaisesAfectadosPorLanding(punto);
     }
 }

@@ -94,7 +94,7 @@ public class Controller<T> {
 				view.printMessage("--------- \nIngrese el nombre del punto de conexión");
 				String landing= lector.next();
 				lector.nextLine();
-				String res5= modelo.obtenerPaisesAfectadosPorLanding(landing);
+				String res5= modelo.obtenerPaisesAfectados(landing);
 				view.printMessage(res5);
 				break;
 			case 7:
